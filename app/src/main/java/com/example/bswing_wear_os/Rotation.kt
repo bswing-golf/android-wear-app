@@ -13,8 +13,8 @@ class Rotation: SensorEventListener {
     private var z: Double = 0.00
     private var scalar: Double = 0.00
 
-    val sensorManager: SensorManager = Helper.currentContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-    val rotation = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
+    private val sensorManager: SensorManager = Helper.currentContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+    private val rotation = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
 
     fun initializeSensor() {
         this.sensorManager.registerListener(this, rotation , SensorManager.SENSOR_DELAY_NORMAL)

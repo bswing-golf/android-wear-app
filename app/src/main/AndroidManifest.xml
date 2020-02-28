@@ -3,10 +3,11 @@
     package="com.example.bswing_wear_os">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <uses-feature android:name="android.hardware.type.watch" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -27,9 +28,11 @@
             android:value="true" />
 
         <activity
+            android:name=".StartingSwingActivity"
+            android:label="@string/title_activity_starting_swing"></activity>
+        <activity
             android:name=".SelectClubActivity"
-            android:label="@string/title_activity_select_club">
-        </activity>
+            android:label="@string/title_activity_select_club"></activity>
         <activity
             android:name=".SaveOrDiscardSwingActivity"
             android:label="@string/title_activity_save_or_discard_swing" />

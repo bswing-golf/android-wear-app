@@ -13,8 +13,8 @@ class Accelerometer: SensorEventListener {
     private var y: Double = 0.00
     private var z: Double = 0.00
 
-    val sensorManager: SensorManager = Helper.currentContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-    val accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+    private val sensorManager: SensorManager = Helper.currentContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+    private val accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
     fun initializeSensor() {
         this.sensorManager.registerListener(this, accelerometer , SensorManager.SENSOR_DELAY_NORMAL)

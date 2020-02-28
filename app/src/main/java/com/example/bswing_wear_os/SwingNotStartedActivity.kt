@@ -17,13 +17,23 @@ class SwingNotStartedActivity : WearableActivity() {
             this.startSwing()
         }
 
+        SELECTED_CLUB.setOnClickListener {
+            this.goToSelectClubView()
+        }
+
+        SELECTED_CLUB.text = Helper.swingController.globalClubInstance.getSelectedClubName()
+
         // Enables Always-on
         setAmbientEnabled()
     }
 
     private fun startSwing() {
-        Helper.swingController.createNewSwing()
-        val intent = Intent(this, SwingInProgressActivity::class.java)
+        val intent = Intent(this, StartingSwingActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToSelectClubView() {
+        val intent = Intent(this, SelectClubActivity::class.java)
         startActivity(intent)
     }
 

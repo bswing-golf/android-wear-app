@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_grey"
+    android:background="#000000"
     android:padding="@dimen/box_inset_layout_padding"
     tools:context=".SwingNotStartedActivity"
     tools:deviceIds="wear">
@@ -12,24 +12,26 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/inner_frame_layout_padding"
-        app:boxedEdges="all">
+        android:background="#00000000"
+        android:padding="@dimen/inner_frame_layout_padding">
+
+        <Button
+            android:id="@+id/SELECTED_CLUB"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:text="@string/select_club"
+            android:textSize="16dp" />
 
         <Button
             android:id="@+id/START_SWING_BUTTON"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="173dp"
+            android:layout_height="82dp"
             android:layout_gravity="center"
-            android:text="@string/start_swing" />
+            android:backgroundTint="#4CAF50"
+            android:text="@string/start_swing"
+            android:textSize="20dp" />
 
-        <Button
-            android:id="@+id/button"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:layout_gravity="top"
-            android:text="@string/select_club"
-            android:textSize="10sp" />
     </FrameLayout>
 </androidx.wear.widget.BoxInsetLayout>

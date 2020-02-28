@@ -7,6 +7,7 @@ object Helper {
     lateinit var dbInstance: AppDatabase
     lateinit var currentContext: Context
     val swingController: SwingController = SwingController()
+    val clubList: ClubList = ClubList()
 
     fun setDatabaseInstance(db: AppDatabase) {
         this.dbInstance = db

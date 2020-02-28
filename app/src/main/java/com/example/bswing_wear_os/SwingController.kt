@@ -1,51 +1,34 @@
 package com.example.bswing_wear_os
 
+import kotlinx.coroutines.runBlocking
+
 class SwingController {
 
     val globalClubInstance: Club = Club()
-    var globalSwingInstance: Swing? = null
+    lateinit var globalSwingInstance: Swing
 
     fun createNewSwing() {
-        if (this.globalSwingInstance == null) { this.globalSwingInstance = Swing() }
-
-        try {
-            var currentSwing = this.globalSwingInstance
-
-            if(currentSwing == null) { throw Exception("Swing instance is null") }
-            else {
-                println("Starting Swing...")
-                currentSwing.startSwing()
-                currentSwing.start()
-            }
-        } catch(e: Exception) {
-            println(e)
+        this.globalSwingInstance = Swing()
+        println("Starting Swing...")
+        runBlocking {
+            globalSwingInstance.setupSwing()
         }
+        this.globalSwingInstance.startSwing()
+        this.globalSwingInstance.start()
     }
 
     fun endSwing() {
-        try {
-            var currentSwing = this.globalSwingInstance
-
-            if(currentSwing == null) { throw Exception("Swing instance is null") }
-            else {
-                println("Ending Swing...")
-                currentSwing.endSwing()
-            }
-        } catch(e: Exception) {
-            println(e)
-        }
+        this.globalSwingInstance.endSwing()
     }
 
     suspend fun saveSwing() {
         println("Saving Swing...")
         val swingData = this.globalSwingInstance?.getSwingData()
-        // Convert selected club enum value to integer as index of enum and save for db index
-        RepositorySwing(Helper.dbInstance.roomDaoSwing()).updateLocalSwing(0, RoomConverters().fromArrayList(swingData))
-        this.destroySwing()
+        RepositorySwing(Helper.dbInstance.roomDaoSwing()).updateLocalSwing(Helper.clubList.clubList[this.globalClubInstance.selectedClub].toString(), RoomConverters().fromArrayList(swingData))
+        this.globalClubInstance.selectClub(this.globalClubInstance.selectedClub)
     }
 
-    fun destroySwing() {
-        println("Destroying Swing...")
-        this.globalSwingInstance = null
+    suspend fun getSwingFromDb(club: String): RoomSwing {
+        return RepositorySwing(Helper.dbInstance.roomDaoSwing()).getLocalSwing(club)
     }
 }

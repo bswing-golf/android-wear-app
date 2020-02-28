@@ -1,32 +1,8 @@
 package com.example.bswing_wear_os
 
 enum class ClubTypes {
-    LOB_WEDGE,
-    SAND_WEDGE,
-    GAP_WEDGE,
-    PITCHING_WEDGE,
-    NINE_IRON,
-    EIGHT_IRON,
-    SEVEN_IRON,
-    SIX_IRON,
-    FIVE_IRON,
-    FOUR_IRON,
-    THREE_IRON,
-    TWO_IRON,
-    ONE_IRON,
-    DRIVING_IRON,
-    SEVEN_HYBRID,
-    SIX_HYBRID,
-    FIVE_HYBRID,
-    FOUR_HYRBID,
-    THREE_HYRBID,
-    TW0_HYBRID,
-    ONE_HYBRID,
-    SEVEN_WOOD,
-    SIX_WOOD,
-    FIVE_WOOD,
-    FOUR_WOOD,
-    THREE_WOOD,
-    TWO_WOOD,
-    DRIVER
+    WEDGE,
+    IRON,
+    HYBRID,
+    WOOD
 }

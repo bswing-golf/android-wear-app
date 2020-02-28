@@ -10,16 +10,16 @@ class RepositorySwing(val local: DaoSwing) {
         return local.getAllSwings()
     }
 
-    suspend fun getLocalSwing(index: Int): RoomSwing {
-        return local.getSwingByClub(index)
+    suspend fun getLocalSwing(club: String): RoomSwing {
+        return local.getSwingByClub(club)
     }
 
     suspend fun deleteLocalSwing(swing: RoomSwing) {
         local.deleteSwing(swing)
     }
 
-    suspend fun updateLocalSwing(index: Int, swingData: String) {
-        local.insertOrUpdateSwing(RoomSwing(index, swingData))
+    suspend fun updateLocalSwing(club: String, swingData: String) {
+        local.insertOrUpdateSwing(RoomSwing(club, swingData))
     }
 
 }

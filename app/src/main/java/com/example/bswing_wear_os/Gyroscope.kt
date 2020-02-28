@@ -12,8 +12,8 @@ class Gyroscope: SensorEventListener {
     private var y: Double = 0.00
     private var z: Double = 0.00
 
-    val sensorManager: SensorManager = Helper.currentContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-    val gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
+    private val sensorManager: SensorManager = Helper.currentContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+    private val gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
 
     fun initializeSensor() {
         this.sensorManager.registerListener(this, gyroscope , SensorManager.SENSOR_DELAY_NORMAL)

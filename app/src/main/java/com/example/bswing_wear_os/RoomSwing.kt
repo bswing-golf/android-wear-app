@@ -13,7 +13,7 @@ data class RoomSwing(
 
     @PrimaryKey
     @ColumnInfo(name = "club")
-    val club: Int,
+    val club: String,
 
     @ColumnInfo(name = "swing_data")
     val swingData: String

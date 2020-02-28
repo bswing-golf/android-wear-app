@@ -37,7 +37,6 @@ class SaveOrDiscardSwingActivity : WearableActivity() {
     }
 
     fun discardSwing() {
-        Helper.swingController.destroySwing()
         val intent = Intent(this, SwingNotStartedActivity::class.java)
         startActivity(intent)
     }
