@@ -28,7 +28,7 @@
             android:layout_width="173dp"
             android:layout_height="82dp"
             android:layout_gravity="center"
-            android:backgroundTint="#E91E1E"
+            android:backgroundTint="#2196F3"
             android:text="@string/end_swing"
             android:textSize="20dp" />
 

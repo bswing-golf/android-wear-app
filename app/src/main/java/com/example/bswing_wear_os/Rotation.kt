@@ -6,6 +6,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 
+// unitless
 class Rotation: SensorEventListener {
 
     private var x: Double = 0.00

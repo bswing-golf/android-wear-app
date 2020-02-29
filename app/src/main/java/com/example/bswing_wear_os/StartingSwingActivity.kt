@@ -9,9 +9,8 @@ import android.os.Vibrator
 import android.support.wearable.activity.WearableActivity
 import kotlinx.android.synthetic.main.starting_swing.*
 
-class StartingSwingActivity : WearableActivity() {
 
-    private val vibration: Vibrator = Helper.currentContext.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+class StartingSwingActivity : WearableActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,27 +25,40 @@ class StartingSwingActivity : WearableActivity() {
     }
 
     private fun beginCountdown() {
-        COUNTDOWN_TEXT.text = "3"
+        COUNTDOWN_TEXT.text = "5"
         Handler().postDelayed(
             {
-                COUNTDOWN_TEXT.text = "2"
+                COUNTDOWN_TEXT.text = "4"
             },
             1000
         )
         Handler().postDelayed(
             {
-                COUNTDOWN_TEXT.text = "1"
+                COUNTDOWN_TEXT.text = "3"
             },
             2000
         )
         Handler().postDelayed(
             {
+                COUNTDOWN_TEXT.text = "2"
+            },
+            3000
+        )
+        Handler().postDelayed(
+            {
+                COUNTDOWN_TEXT.text = "1"
+            },
+            4000
+        )
+        Handler().postDelayed(
+            {
+                val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                vibrator.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE))
                 Helper.swingController.createNewSwing()
-                vibration.vibrate(VibrationEffect.createOneShot(500, 1))
                 val intent = Intent(this, SwingInProgressActivity::class.java)
                 startActivity(intent)
             },
-            3000
+            5000
         )
     }
 }

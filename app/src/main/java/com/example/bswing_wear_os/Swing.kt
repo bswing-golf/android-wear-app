@@ -1,5 +1,8 @@
 package com.example.bswing_wear_os
 
+import android.content.Intent
+import java.time.LocalTime
+
 class Swing : Thread() {
 
     private var run = false
@@ -8,8 +11,10 @@ class Swing : Thread() {
     private lateinit var roomSwingData: ArrayList<Array<Array<Double>>>
 
     fun setupSwing() {
-        if(Helper.swingController.globalClubInstance.hasSwingData) {
-            this.roomSwingData = RoomConverters().fromString(Helper.swingController.globalClubInstance.clubData.swingData)
+        @Suppress("SENSELESS_COMPARISON")
+        if(Helper.swingController.globalClubInstance.clubData != null) {
+            val localClubData = Helper.swingController.globalClubInstance.clubData
+            this.roomSwingData = Helper.roomConvertersInstance.fromString(localClubData!!.swingData)
         }
     }
 
@@ -19,6 +24,7 @@ class Swing : Thread() {
 
     fun endSwing() {
         this.setRunning(false)
+        Helper.swingController.currentSwingDataInMemory = this.swingData
         this.swingDataController.deInitializeSensors()
     }
 
@@ -30,7 +36,7 @@ class Swing : Thread() {
         this.swingDataController.initializeSensors()
         while(run) {
             // Generate swing data 200 times per second
-            sleep(5)
+            sleep(10)
             this.generateSwingData()
         }
     }

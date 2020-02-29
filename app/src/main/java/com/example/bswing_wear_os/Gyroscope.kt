@@ -6,6 +6,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 
+// rad/s
 class Gyroscope: SensorEventListener {
 
     private var x: Double = 0.00

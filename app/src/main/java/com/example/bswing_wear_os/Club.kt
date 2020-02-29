@@ -5,8 +5,7 @@ import kotlinx.coroutines.runBlocking
 class Club {
 
     lateinit var selectedClub: ClubNames
-    var hasSwingData: Boolean = false
-    lateinit var clubData: RoomSwing
+    var clubData: RoomSwing ?= null
 
     fun selectClub(club: ClubNames) {
         this.selectedClub = club
@@ -19,13 +18,12 @@ class Club {
 
     private fun hasSwingData() {
         runBlocking {
-            val swing = Helper.swingController.getSwingFromDb(Helper.clubList.clubList[selectedClub].toString())
-            @Suppress("SENSELESS_COMPARISON")
-            hasSwingData = (swing != null)
-            @Suppress("SENSELESS_COMPARISON")
-            if(swing != null) { clubData = swing }
+            clubData = Helper.swingController.getSwingFromDb(Helper.clubList.clubList[selectedClub].toString())
+            if(clubData != null) {
+                val localClubData = clubData
+                Helper.swingController.currentSwingDataInMemory = Helper.roomConvertersInstance.fromString(localClubData!!.swingData)
+            }
         }
-        println(this.hasSwingData)
     }
 
 }

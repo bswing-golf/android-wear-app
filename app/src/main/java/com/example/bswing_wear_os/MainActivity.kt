@@ -15,7 +15,7 @@ class MainActivity : WearableActivity() {
         // Where should db be instantiated?
         val db: AppDatabase = AppDatabase.getInstance(this)
         Helper.setDatabaseInstance(db)
-        Helper.swingController.globalClubInstance.selectClub(ClubNames.EIGHT_IRON)
+        Helper.swingController.globalClubInstance.selectClub(ClubNames.MID_IRON)
 
         val intent = Intent(this, SwingNotStartedActivity::class.java)
         startActivity(intent)
