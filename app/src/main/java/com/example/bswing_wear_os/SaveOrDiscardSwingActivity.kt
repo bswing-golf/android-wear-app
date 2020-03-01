@@ -3,6 +3,7 @@ package com.example.bswing_wear_os
 import android.content.Intent
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
+import android.view.WindowManager
 import kotlinx.android.synthetic.main.save_or_discard_swing.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
@@ -14,6 +15,7 @@ class SaveOrDiscardSwingActivity : WearableActivity() {
         setContentView(R.layout.save_or_discard_swing)
 
         Helper.setCurrentContextInstance(this)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         DISCARD_SWING_BUTTON.setOnClickListener {
             this.discardSwing()

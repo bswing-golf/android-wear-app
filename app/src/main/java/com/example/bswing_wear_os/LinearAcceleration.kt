@@ -9,9 +9,7 @@ import android.hardware.SensorManager
 // m/s^2
 class LinearAcceleration: SensorEventListener {
 
-    private var x: Double = 0.00
-    private var y: Double = 0.00
-    private var z: Double = 0.00
+    private val linearAccelerationData: FloatArray = FloatArray(3)
 
     private val sensorManager: SensorManager = Helper.currentContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
     private val accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION)
@@ -31,15 +29,15 @@ class LinearAcceleration: SensorEventListener {
 
         when(mySensor.getType()) {
             Sensor.TYPE_LINEAR_ACCELERATION -> {
-                this.x = sensorEvent.values[0].toDouble()
-                this.y = sensorEvent.values[1].toDouble()
-                this.z = sensorEvent.values[2].toDouble()
+                linearAccelerationData[0] = sensorEvent.values[0]
+                linearAccelerationData[1] = sensorEvent.values[1]
+                linearAccelerationData[2] = sensorEvent.values[2]
             }
         }
     }
 
-    fun getLinearAccelerationData(): Array<Double> {
-        return arrayOf(this.x, this.y, this.z)
+    fun getLinearAccelerationData(): FloatArray {
+        return this.linearAccelerationData
     }
 
 }

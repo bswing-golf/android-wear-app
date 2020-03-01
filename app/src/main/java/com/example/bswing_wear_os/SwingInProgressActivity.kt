@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.support.wearable.activity.WearableActivity
+import android.view.WindowManager
 import kotlinx.android.synthetic.main.swing_in_progress.*
 import kotlinx.android.synthetic.main.swing_in_progress.SELECTED_CLUB
 
@@ -19,6 +20,7 @@ class SwingInProgressActivity : WearableActivity() {
         setContentView(R.layout.swing_in_progress)
 
         Helper.setCurrentContextInstance(this)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         END_SWING_BUTTON.setOnClickListener {
             this.endSwing()

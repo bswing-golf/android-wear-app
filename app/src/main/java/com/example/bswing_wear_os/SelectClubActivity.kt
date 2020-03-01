@@ -2,6 +2,7 @@ package com.example.bswing_wear_os
 
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
+import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.wear.widget.WearableLinearLayoutManager
 import androidx.wear.widget.WearableRecyclerView
@@ -16,7 +17,9 @@ class SelectClubActivity : WearableActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.select_club)
+
         Helper.setCurrentContextInstance(this)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         this.linearLayoutManager = WearableLinearLayoutManager(this)
         this.adapter = SelectClubAdapter(this.clubList)

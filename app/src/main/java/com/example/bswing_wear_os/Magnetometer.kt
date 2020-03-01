@@ -6,16 +6,15 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 
-// unitless
-class Rotation: SensorEventListener {
+class Magnetometer: SensorEventListener {
 
-    private val rotationData: FloatArray = FloatArray(4)
+    private val magnetometerData: FloatArray = FloatArray(3)
 
     private val sensorManager: SensorManager = Helper.currentContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-    private val rotation = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
+    private val magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
 
     fun initializeSensor() {
-        this.sensorManager.registerListener(this, rotation , SensorManager.SENSOR_DELAY_NORMAL)
+        this.sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_NORMAL)
     }
 
     fun deInitializeSensor() {
@@ -28,17 +27,16 @@ class Rotation: SensorEventListener {
         val mySensor: Sensor = sensorEvent.sensor
 
         when(mySensor.getType()) {
-            Sensor.TYPE_ROTATION_VECTOR -> {
-                rotationData[0] = sensorEvent.values[0]
-                rotationData[1] = sensorEvent.values[1]
-                rotationData[2] = sensorEvent.values[2]
-                rotationData[3] = sensorEvent.values[3]
+            Sensor.TYPE_MAGNETIC_FIELD -> {
+                magnetometerData[0] = sensorEvent.values[0]
+                magnetometerData[1] = sensorEvent.values[1]
+                magnetometerData[2] = sensorEvent.values[2]
             }
         }
     }
 
-    fun getRotationData(): FloatArray {
-        return this.rotationData
+    fun getMagnetometerData(): FloatArray {
+        return this.magnetometerData
     }
 
 }

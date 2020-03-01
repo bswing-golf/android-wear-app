@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.support.wearable.activity.WearableActivity
+import android.view.WindowManager
 import kotlinx.android.synthetic.main.starting_swing.*
 
 
@@ -17,6 +18,7 @@ class StartingSwingActivity : WearableActivity() {
         setContentView(R.layout.starting_swing)
 
         Helper.setCurrentContextInstance(this)
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         this.beginCountdown()
 

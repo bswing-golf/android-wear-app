@@ -9,9 +9,7 @@ import android.hardware.SensorManager
 // rad/s
 class Gyroscope: SensorEventListener {
 
-    private var x: Double = 0.00
-    private var y: Double = 0.00
-    private var z: Double = 0.00
+    private val gyroscopeData: FloatArray = FloatArray(3)
 
     private val sensorManager: SensorManager = Helper.currentContext.getSystemService(Context.SENSOR_SERVICE) as SensorManager
     private val gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
@@ -31,15 +29,15 @@ class Gyroscope: SensorEventListener {
 
         when(mySensor.getType()) {
             Sensor.TYPE_GYROSCOPE -> {
-                this.x = sensorEvent.values[0].toDouble()
-                this.y = sensorEvent.values[1].toDouble()
-                this.z = sensorEvent.values[2].toDouble()
+                gyroscopeData[0] = sensorEvent.values[0]
+                gyroscopeData[1] = sensorEvent.values[1]
+                gyroscopeData[2] = sensorEvent.values[2]
             }
         }
     }
 
-    fun getGyroscopeData(): Array<Double> {
-        return arrayOf(this.x, this.y, this.z)
+    fun getGyroscopeData(): FloatArray {
+        return this.gyroscopeData
     }
 
 }

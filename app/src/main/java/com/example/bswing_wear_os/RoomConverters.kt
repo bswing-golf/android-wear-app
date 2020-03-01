@@ -7,13 +7,13 @@ import com.google.gson.reflect.TypeToken
 class RoomConverters {
 
     @TypeConverter
-    fun fromString(swingData: String): ArrayList<Array<Array<Double>>> {
-        val swingDataType = object: TypeToken<ArrayList<Array<Array<Double>>>>() {}.type
+    fun fromString(swingData: String): ArrayList<Array<FloatArray>> {
+        val swingDataType = object: TypeToken<ArrayList<Array<FloatArray>>>() {}.type
         return Gson().fromJson(swingData, swingDataType)
     }
 
     @TypeConverter
-    fun fromArrayList(swingData: ArrayList<Array<Array<Double>>>?): String {
+    fun fromArrayList(swingData: ArrayList<Array<FloatArray>>?): String {
         val gson = Gson()
         val json = gson.toJson(swingData)
         return json

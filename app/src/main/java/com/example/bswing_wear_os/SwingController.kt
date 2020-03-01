@@ -6,7 +6,7 @@ class SwingController {
 
     val globalClubInstance: Club = Club()
     lateinit var globalSwingInstance: Swing
-    var currentSwingDataInMemory: ArrayList<Array<Array<Double>>>? = null
+    var currentSwingDataInMemory: ArrayList<Array<FloatArray>>? = null
 
     fun createNewSwing() {
         this.globalSwingInstance = Swing()

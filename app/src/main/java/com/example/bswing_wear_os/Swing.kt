@@ -6,9 +6,9 @@ import java.time.LocalTime
 class Swing : Thread() {
 
     private var run = false
-    private var swingData: ArrayList<Array<Array<Double>>> = ArrayList()
+    private var swingData: ArrayList<Array<FloatArray>> = ArrayList()
     private val swingDataController: SwingDataController = SwingDataController()
-    private lateinit var roomSwingData: ArrayList<Array<Array<Double>>>
+    private lateinit var roomSwingData: ArrayList<Array<FloatArray>>
 
     fun setupSwing() {
         @Suppress("SENSELESS_COMPARISON")
@@ -36,7 +36,7 @@ class Swing : Thread() {
         this.swingDataController.initializeSensors()
         while(run) {
             // Generate swing data 200 times per second
-            sleep(10)
+            sleep(5)
             this.generateSwingData()
         }
     }
@@ -45,7 +45,7 @@ class Swing : Thread() {
         this.swingData.add(this.swingDataController.getCurrentSensorData())
     }
 
-    fun getSwingData(): ArrayList<Array<Array<Double>>> {
+    fun getSwingData(): ArrayList<Array<FloatArray>> {
         return this.swingData
     }
 
