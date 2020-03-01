@@ -3,9 +3,7 @@ package com.example.bswing_wear_os
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
 import android.view.WindowManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.wear.widget.WearableLinearLayoutManager
-import androidx.wear.widget.WearableRecyclerView
 import kotlinx.android.synthetic.main.select_club.*
 
 class SelectClubActivity : WearableActivity() {
@@ -24,6 +22,7 @@ class SelectClubActivity : WearableActivity() {
         this.linearLayoutManager = WearableLinearLayoutManager(this)
         this.adapter = SelectClubAdapter(this.clubList)
 
+        RECYCLER_LAUNCHER_VIEW.requestFocus()
         RECYCLER_LAUNCHER_VIEW.layoutManager = linearLayoutManager
         RECYCLER_LAUNCHER_VIEW.adapter = adapter
         RECYCLER_LAUNCHER_VIEW.apply {
