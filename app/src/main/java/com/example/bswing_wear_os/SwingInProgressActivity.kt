@@ -30,7 +30,7 @@ class SwingInProgressActivity : WearableActivity() {
         this.endSwingIfTooLong()
 
         val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        vibrator.vibrate(VibrationEffect.createOneShot(5000, VibrationEffect.DEFAULT_AMPLITUDE))
+        vibrator.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE))
 
         SELECTED_CLUB.text = Helper.swingController.globalClubInstance.getSelectedClubName()
 

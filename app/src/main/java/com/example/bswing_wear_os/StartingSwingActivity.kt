@@ -54,8 +54,6 @@ class StartingSwingActivity : WearableActivity() {
         )
         Handler().postDelayed(
             {
-                val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-                vibrator.vibrate(VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE))
                 Helper.swingController.createNewSwing()
                 val intent = Intent(this, SwingInProgressActivity::class.java)
                 startActivity(intent)

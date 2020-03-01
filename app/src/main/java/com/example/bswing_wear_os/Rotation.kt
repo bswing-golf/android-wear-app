@@ -25,14 +25,9 @@ class Rotation: SensorEventListener {
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 
     override fun onSensorChanged(sensorEvent: SensorEvent) {
-        val mySensor: Sensor = sensorEvent.sensor
-
-        when(mySensor.getType()) {
+        when(sensorEvent.sensor.type) {
             Sensor.TYPE_ROTATION_VECTOR -> {
-                rotationData[0] = sensorEvent.values[0]
-                rotationData[1] = sensorEvent.values[1]
-                rotationData[2] = sensorEvent.values[2]
-                rotationData[3] = sensorEvent.values[3]
+                System.arraycopy(sensorEvent.values, 0, this.rotationData, 0, this.rotationData.size)
             }
         }
     }

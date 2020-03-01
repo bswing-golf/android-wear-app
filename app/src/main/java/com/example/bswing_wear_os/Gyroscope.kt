@@ -25,13 +25,9 @@ class Gyroscope: SensorEventListener {
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 
     override fun onSensorChanged(sensorEvent: SensorEvent) {
-        val mySensor: Sensor = sensorEvent.sensor
-
-        when(mySensor.getType()) {
+        when(sensorEvent.sensor.type) {
             Sensor.TYPE_GYROSCOPE -> {
-                gyroscopeData[0] = sensorEvent.values[0]
-                gyroscopeData[1] = sensorEvent.values[1]
-                gyroscopeData[2] = sensorEvent.values[2]
+                System.arraycopy(sensorEvent.values, 0, this.gyroscopeData, 0, this.gyroscopeData.size)
             }
         }
     }

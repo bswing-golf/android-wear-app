@@ -25,13 +25,9 @@ class Accelerometer: SensorEventListener {
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 
     override fun onSensorChanged(sensorEvent: SensorEvent) {
-        val mySensor: Sensor = sensorEvent.sensor
-
-        when(mySensor.getType()) {
+        when(sensorEvent.sensor.type) {
             Sensor.TYPE_ACCELEROMETER -> {
-                accelerometerData[0] = sensorEvent.values[0]
-                accelerometerData[1] = sensorEvent.values[1]
-                accelerometerData[2] = sensorEvent.values[2]
+                System.arraycopy(sensorEvent.values, 0, this.accelerometerData, 0, this.accelerometerData.size)
             }
         }
     }
