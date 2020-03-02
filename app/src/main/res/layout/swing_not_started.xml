@@ -31,7 +31,29 @@
             android:layout_gravity="center"
             android:backgroundTint="#4CAF50"
             android:text="@string/start_swing"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/DO_NOT_DISTURB_TEXT"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:text="@string/do_not_disturb_text"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            tools:visibility="gone" />
+
+        <Button
+            android:id="@+id/REFRESH_BUTTON"
+            style="@android:style/Widget.Material.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:text="Refresh"
+            android:textColor="#2196F3"
+            android:textSize="16dp"
+            tools:visibility="gone" />
 
     </FrameLayout>
 </androidx.wear.widget.BoxInsetLayout>
